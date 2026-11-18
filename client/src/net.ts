@@ -126,13 +126,12 @@ function explainFailure(url: string): string {
   const healthUrl = url.replace(/^ws/i, "http") + "/health";
   return (
     `Could not connect to ${url}.\n\n` +
-    "Check, in this order:\n" +
-    "1. The deployment is Ready and the port is the External port of gameport (not 7777).\n" +
-    "2. You used the deployment host name (…pr.edgegap.net), not its IP address.\n" +
-    "3. The app version port is WS with TLS Upgrade enabled.\n" +
-    `4. Open ${healthUrl} in a new tab. A certificate warning there means TLS is not set up for that ` +
-    "host and port; a timeout means the port is wrong or the server is not running.\n\n" +
-    "The browser console (F12) shows the browser's own message for this failure."
+    "The browser console (F12) names the cause:\n" +
+    "• net::ERR_CERT_COMMON_NAME_INVALID: you used an IP address. Use the deployment host name (…pr.edgegap.net).\n" +
+    "• net::ERR_SSL_PROTOCOL_ERROR: the port doesn't speak TLS. Enable TLS Upgrade on the WS port of your app version.\n" +
+    "• net::ERR_CONNECTION_REFUSED or a timeout: wrong port (use the External port of gameport, not 7777) " +
+    "or the deployment isn't Ready.\n\n" +
+    `Opening ${healthUrl} in a new tab shows the same error as a page.`
   );
 }
 

@@ -24,10 +24,10 @@ export const PLAYER = {
   radius: 0.5,
   density: 1.5,
   /** Horizontal impulse applied per tick while a direction key is held. */
-  moveImpulse: 0.55,
+  moveImpulse: 0.35,
   jumpImpulse: 4.5,
   /** Horizontal speed cap, metres per second. */
-  maxSpeed: 9,
+  maxSpeed: 7,
   linearDamping: 0.6,
   angularDamping: 0.8,
   friction: 0.9,

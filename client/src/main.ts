@@ -373,7 +373,7 @@ function frame(now: number): void {
     }
     if (me?.ball.visible) {
       const target = me.ball.position;
-      camera.position.lerp(new THREE.Vector3(target.x, target.y + 11, target.z + 12), 1 - Math.exp(-dt * 4));
+      camera.position.lerp(new THREE.Vector3(target.x, target.y + 14, target.z + 13), 1 - Math.exp(-dt * 4));
       camera.lookAt(target.x, target.y, target.z);
     }
 
@@ -410,4 +410,4 @@ serverInput.value = params.get("server") ?? (["localhost", "127.0.0.1"].includes
 if (params.get("server")) void start(serverInput.value, nameInput.value);
 
 // Hook for automated tests and the GIF recorder.
-Object.assign(window, { __game: { keys, get connected() { return conn !== null; }, get players() { return playerViews.size; } } });
+Object.assign(window, { __game: { keys, get connected() { return conn !== null; }, get players() { return playerViews.size; }, get position() { return predictor?.position ?? null; } } });
