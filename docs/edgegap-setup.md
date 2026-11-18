@@ -117,7 +117,7 @@ The repository's `server-image.yml` workflow does the same on every push to `mai
 
 Your own tools get the same details from the API: [`GET /v1/status/{request_id}`](https://docs.edgegap.com/docs/api) returns `fqdn` and `ports.gameport.external`, and `ports.gameport.link` holds both. A matchmaker returns them in its assignment.
 
-**Using a coding agent?** The [Edgegap MCP server](https://docs.edgegap.com/docs/mcp-integration) validates the Dockerfile and ports (`edgegap_validate_server_config`), creates the application and version (`edgegap_create_app`, `edgegap_create_app_version` with `protocol: "WS"` and `tls_upgrade: true`), deploys (`edgegap_deploy`) and returns the `wss://` address (`edgegap_wait_for_deployment`).
+**Using a coding agent?** The [Edgegap MCP server](https://docs.edgegap.com/docs/mcp-integration) validates the Dockerfile and ports (`edgegap_validate_server_config`), creates the application and version (`edgegap_create_app`, `edgegap_create_app_version` with `protocol: "WS"` and `tls_upgrade: true`), deploys (`edgegap_deploy`) and returns the `wss://` address (`edgegap_wait_for_deployment`). Its `edgegap-browser-wasm` skill holds this whole guide for the agent: the shared physics module, prediction, the slim Dockerfile and the browser error messages.
 
 ## 4. Host the Client
 
