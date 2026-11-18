@@ -226,14 +226,16 @@ function onSnapshot(s: Snapshot): void {
 
 async function start(rawServer: string, name: string): Promise<void> {
   connectButton.disabled = true;
+  // A warning about the address (IP instead of host name, no port) stays on top of every message.
+  let warning = "";
   try {
     const target = toServerUrl(rawServer);
-    if (target.warning) setStatus(target.warning);
+    warning = target.warning ? `${target.warning}\n\n` : "";
     await rapierReady;
     predictor = new Predictor();
     conn = await connect(target.url, name, {
       onMessage,
-      onStatus: (text) => setStatus(text),
+      onStatus: (text) => setStatus(warning + text),
       onClose: (reason) => stop(reason),
     });
     serverUrl = target.url;
@@ -243,7 +245,7 @@ async function start(rawServer: string, name: string): Promise<void> {
     params.set("server", rawServer.trim());
     history.replaceState(null, "", `?${params}`);
   } catch (err) {
-    setStatus((err as Error).message, true);
+    setStatus(warning + (err as Error).message, true);
     console.error(err);
   } finally {
     connectButton.disabled = false;
