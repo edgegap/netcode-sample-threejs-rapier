@@ -1,0 +1,128 @@
+:root {
+  color-scheme: dark;
+  --bg: #0d1b2a;
+  --panel: rgba(13, 27, 42, 0.92);
+  --text: #e8eef5;
+  --muted: #9fb3c8;
+  --accent: #3fa7ff;
+  --error: #ff7b7b;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+  background: var(--bg);
+  color: var(--text);
+}
+
+#app {
+  position: fixed;
+  inset: 0;
+}
+
+.panel {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: min(440px, calc(100vw - 32px));
+  max-height: calc(100vh - 32px);
+  overflow: auto;
+  padding: 24px;
+  border-radius: 12px;
+  background: var(--panel);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+}
+
+.panel h1 {
+  margin: 0;
+  font-size: 1.6rem;
+}
+
+.sub,
+.hint {
+  color: var(--muted);
+  font-size: 0.85rem;
+  margin: 4px 0 16px;
+}
+
+.hint {
+  margin-top: -6px;
+}
+
+label {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin-bottom: 12px;
+}
+
+input {
+  display: block;
+  width: 100%;
+  margin-top: 4px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #2c4560;
+  background: #08131f;
+  color: var(--text);
+  font: inherit;
+  font-size: 1rem;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  border: 0;
+  border-radius: 8px;
+  background: var(--accent);
+  color: #04121f;
+  font: inherit;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+#status {
+  margin-top: 14px;
+  font-size: 0.85rem;
+  white-space: pre-wrap;
+  line-height: 1.4;
+}
+
+#status.error {
+  color: var(--error);
+}
+
+code {
+  font-family: ui-monospace, "Cascadia Mono", Consolas, monospace;
+  font-size: 0.85em;
+  word-break: break-all;
+}
+
+#hud {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  right: 12px;
+  pointer-events: none;
+  font-size: 0.85rem;
+  text-shadow: 0 1px 3px #000;
+}
+
+#hud-help {
+  color: var(--muted);
+  margin-top: 4px;
+}

@@ -1,0 +1,24 @@
+{
+  "name": "netcode-sample-threejs-rapier",
+  "private": true,
+  "description": "Browser (three.js + Rapier WASM) multiplayer sample with an authoritative Node.js server on Edgegap.",
+  "license": "MIT",
+  "type": "module",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "workspaces": [
+    "shared",
+    "server",
+    "client"
+  ],
+  "scripts": {
+    "dev": "node scripts/dev.mjs",
+    "build": "npm run build -w shared && npm run build -w server && npm run build -w client",
+    "typecheck": "tsc -b server && tsc -p client --noEmit",
+    "test": "npm run build -w shared && npm run build -w server && node scripts/smoke-test.mjs"
+  },
+  "devDependencies": {
+    "typescript": "6.0.3"
+  }
+}

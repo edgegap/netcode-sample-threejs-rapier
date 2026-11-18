@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Rapier Arena: three.js multiplayer on Edgegap</title>
+    <meta name="description" content="Browser multiplayer sample: three.js rendering, Rapier WebAssembly physics, an authoritative Node.js server on Edgegap over secure WebSockets." />
+    <link rel="stylesheet" href="./src/style.css" />
+  </head>
+  <body>
+    <div id="app"></div>
+
+    <div id="hud" hidden>
+      <div id="hud-status"></div>
+      <div id="hud-help">WASD / arrows: roll · Space: jump · P: toggle prediction</div>
+    </div>
+
+    <form id="menu" class="panel" autocomplete="off">
+      <h1>Rapier Arena</h1>
+      <p class="sub">three.js + Rapier (WebAssembly) · authoritative server on Edgegap</p>
+      <label>
+        Name
+        <input id="name" maxlength="16" placeholder="Player" />
+      </label>
+      <label>
+        Server
+        <input id="server" placeholder="abc123.pr.edgegap.net:31500" spellcheck="false" />
+      </label>
+      <p class="hint">
+        Deployment host + external port of <code>gameport</code>, e.g.
+        <code>abc123.pr.edgegap.net:31500</code>. Local server: <code>localhost:7777</code>.
+      </p>
+      <button id="connect" type="submit">Connect</button>
+      <div id="status" role="status"></div>
+    </form>
+
+    <script type="module" src="./src/main.ts"></script>
+  </body>
+</html>
